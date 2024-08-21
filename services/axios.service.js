@@ -65,12 +65,12 @@ API.interceptors.response.use(
             try {
                 const updateTokenRes = await PUBLIC_API.post(
                     `${ApiUrls.REFRESH_TOKEN}`,
-                    {},
+                    { refresh: localStorage.getItem(REFRESH_TOKEN) },
                     { headers: { Authorization: `Bearer ${localStorage.getItem(REFRESH_TOKEN)}` } }
                 );
-                const { idToken } = updateTokenRes.data.data;
-                localStorage.setItem(TOKEN, idToken);
-                error.response.config.headers.Authorization = `Bearer ${idToken}`;
+                const { access } = updateTokenRes.data;
+                localStorage.setItem(TOKEN, access);
+                error.response.config.headers.Authorization = `Bearer ${access}`;
                 return API(error.response.config);
             } catch (_error) {
                 if (error.response.status === 401) {

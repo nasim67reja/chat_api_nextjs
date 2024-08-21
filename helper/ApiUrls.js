@@ -3,6 +3,7 @@ export default {
     REFRESH_TOKEN: `refresh_token`,
     SIGN_IN: `signin/`,
     SIGN_UP: `signup/`,
+    GET_USER: `user/`,
     FORGOT_PASSWORD: `forgot_password`,
     UPDATE_PROFILE: `user/update`,
     UPDATE_PHOTO: `user/update/photo`,
